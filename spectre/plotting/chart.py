@@ -68,7 +68,7 @@ def plot_chart(df_prices, ohlcv, df_factor, trace_types=None, styles=None, inlin
                 continue
             style = styles.get(col, {})
             style['name'] = style.get('name', col)
-            fig.add_trace(go.__dict__[trace_type](x=index, y=factors[col], **style))
+            fig.add_trace(getattr(go,trace_type)(x=index, y=factors[col], **style))
 
         new_axis = dict(anchor="free", overlaying="y", side="right", position=1)
         alpha_ordered_axises = list(y_axises)
